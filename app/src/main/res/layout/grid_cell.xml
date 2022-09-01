@@ -7,58 +7,67 @@
 
     <ImageView
         android:id="@+id/northwest"
-        
         android:background="@android:color/transparent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintWidth_percent="0.5"
         app:layout_constraintHeight_percent="0.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/northeast"
+        app:layout_constraintBottom_toTopOf="@id/southwest"/>
 
     <ImageView
         android:id="@+id/northeast"
+        android:background="@android:color/transparent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintWidth_percent="0.5"
         app:layout_constraintHeight_percent="0.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/screen_background_dark_transparent"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/northwest"
+        app:layout_constraintBottom_toTopOf="@id/southeast"/>
 
     <ImageView
         android:id="@+id/southeast"
+        android:background="@android:color/transparent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintWidth_percent="0.5"
         app:layout_constraintHeight_percent="0.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/screen_background_dark_transparent"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/northeast"
+        app:layout_constraintStart_toEndOf="@id/southwest"/>
 
     <ImageView
         android:id="@+id/southwest"
+        android:background="@android:color/transparent"
         app:layout_constraintWidth_default="percent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintWidth_percent="0.5"
         app:layout_constraintHeight_percent="0.5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/screen_background_dark_transparent"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/northwest"
+        app:layout_constraintEnd_toStartOf="@id/southeast"/>
 
     <ImageView
         android:id="@+id/overlay"
+        android:background="@android:color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/screen_background_dark_transparent"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="107dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

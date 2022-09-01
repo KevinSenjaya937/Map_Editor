@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kevin Senjaya/AndroidStudioProjects/MapEditor/app/src/main/res/drawable/ic_building1.xml" value="0.1" />
+        <entry key="..\:/Users/Kevin Senjaya/AndroidStudioProjects/MapEditor/app/src/main/res/drawable/ic_grass1.xml" value="0.1" />
         <entry key="..\:/Users/Kevin Senjaya/AndroidStudioProjects/MapEditor/app/src/main/res/layout/activity_main.xml" value="0.15628166160081053" />
         <entry key="..\:/Users/Kevin Senjaya/AndroidStudioProjects/MapEditor/app/src/main/res/layout/fragment_map.xml" value="0.15628166160081053" />
         <entry key="..\:/Users/Kevin Senjaya/AndroidStudioProjects/MapEditor/app/src/main/res/layout/fragment_selector.xml" value="0.15628166160081053" />
         <entry key="..\:/Users/Kevin Senjaya/AndroidStudioProjects/MapEditor/app/src/main/res/layout/grid_cell.xml" value="0.1" />
+        <entry key="..\:/Users/Kevin Senjaya/AndroidStudioProjects/MapEditor/app/src/main/res/layout/list_selection.xml" value="0.5" />
       </map>
     </option>
   </component>
