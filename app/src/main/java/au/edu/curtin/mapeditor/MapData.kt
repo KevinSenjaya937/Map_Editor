@@ -1,6 +1,7 @@
 package au.edu.curtin.mapeditor
 
 import java.util.*
+import kotlin.math.min
 
 
 /**
@@ -14,6 +15,9 @@ import java.util.*
  * the algorithm again to replace all the map data with a new randomly-generated grid.
  */
 open class MapData protected constructor(grid: Array<Array<MapElement?>>) {
+
+    val HEIGHT = 30
+    val WIDTH = 30
     private var grid: Array<Array<MapElement?>>
     fun regenerate() {
         grid = generateGrid()
@@ -24,8 +28,8 @@ open class MapData protected constructor(grid: Array<Array<MapElement?>>) {
     }
 
     companion object {
-        private const val WIDTH = 30
-        private const val HEIGHT = 10
+        const val WIDTH = 30
+        const val HEIGHT = 10
         private const val WATER = R.drawable.ic_water
         private val GRASS = intArrayOf(
             R.drawable.ic_grass1, R.drawable.ic_grass2,
@@ -33,6 +37,7 @@ open class MapData protected constructor(grid: Array<Array<MapElement?>>) {
         )
         private val rng = Random()
         private var instance: MapData? = null
+
         fun get(): MapData? {
             if (instance == null) {
                 instance = MapData(generateGrid())
@@ -54,11 +59,11 @@ open class MapData protected constructor(grid: Array<Array<MapElement?>>) {
             for (i in 0 until HEIGHT) {
                 for (j in 0 until WIDTH) {
                     heightField[i][j] = (rng.nextInt(HEIGHT_RANGE)
-                            + INLAND_BIAS * (Math.min(
-                        Math.min(i, j),
-                        Math.min(HEIGHT - i - 1, WIDTH - j - 1)
+                            + INLAND_BIAS * (min(
+                        min(i, j),
+                        min(HEIGHT - i - 1, WIDTH - j - 1)
                     ) -
-                            Math.min(HEIGHT, WIDTH) / 4))
+                            min(HEIGHT, WIDTH) / 4))
                 }
             }
             var newHf = Array(HEIGHT) {

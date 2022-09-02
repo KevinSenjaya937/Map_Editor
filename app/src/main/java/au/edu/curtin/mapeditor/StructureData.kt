@@ -1,5 +1,7 @@
 package au.edu.curtin.mapeditor
 
+import android.os.Parcel
+import android.os.Parcelable
 import java.util.*
 
 
@@ -13,8 +15,8 @@ import java.util.*
  * There is a static int array called DRAWABLES, which stores all the drawable integer references,
  * some of which are not actually used (yet) in a Structure object.
  */
-class StructureData protected constructor() {
-    private val structureList = Arrays.asList(
+open class StructureData protected constructor() {
+    private val structureList = mutableListOf(
         *arrayOf(
             Structure(R.drawable.ic_building1, "House"),
             Structure(R.drawable.ic_building2, "House"),
@@ -39,6 +41,9 @@ class StructureData protected constructor() {
             Structure(R.drawable.ic_tree4, "Tree")
         )
     )
+
+    constructor(parcel: Parcel) : this() {
+    }
 
     operator fun get(i: Int): Structure {
         return structureList[i]
