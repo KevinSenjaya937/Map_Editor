@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         val fm = supportFragmentManager
 
-
-
         val selectorFragment = fm.findFragmentById(R.id.selector)
         if (selectorFragment == null) {
             fm.beginTransaction().add(R.id.selector, SelectorFragment()).commit()
