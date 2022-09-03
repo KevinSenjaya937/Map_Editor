@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -18,17 +19,7 @@ class MapFragment(private val mapData: MapData) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_map, container, false)
-        val recyclerView : RecyclerView = view.findViewById(R.id.mapRecyclerView)
-        val layoutManager =
-            GridLayoutManager(
-                activity,
-                MapData.WIDTH,
-                RecyclerView.HORIZONTAL,
-                false
-            )
-        adapter = MapAdapter(mapData)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
+
         return view
     }
 
@@ -43,9 +34,15 @@ class MapFragment(private val mapData: MapData) : Fragment() {
             )
         recyclerView = view.findViewById(R.id.mapRecyclerView)
         recyclerView.layoutManager = layoutManager
-        adapter = MapAdapter(mapData)
+        adapter = MapAdapter(mapData) {
+            selected -> showToast(selected)
+
+        }
         recyclerView.adapter = adapter
+
     }
 
-
+    fun showToast(selected : Structure) {
+        Toast.makeText(context, selected.label + " selected - Map Received", Toast.LENGTH_SHORT).show()
+    }
 }

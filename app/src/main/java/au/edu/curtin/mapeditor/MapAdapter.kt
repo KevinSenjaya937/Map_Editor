@@ -1,17 +1,18 @@
 package au.edu.curtin.mapeditor
 
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 
-class MapAdapter(private val mapData:MapData) : RecyclerView.Adapter<MapViewHolder>() {
-
+class MapAdapter(private val mapData:MapData,
+                 private val handler : (Structure) -> Unit) : RecyclerView.Adapter<MapViewHolder>() {
+    private var communication = Communication()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MapViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.grid_cell,parent,false)
+
         return MapViewHolder(view, parent)
     }
 
@@ -26,6 +27,15 @@ class MapAdapter(private val mapData:MapData) : RecyclerView.Adapter<MapViewHold
             holder.southWestBlock.setImageResource(mapElement.southWest)
             holder.southEastBlock.setImageResource(mapElement.southEast)
         }
+        holder.itemView.setOnClickListener {
+            val selected = communication.getSelected()
+            Log.v("MESSAGE", "NULL")
+            if (selected != null) {
+                Log.v("MESSAGE", "NOT NULL")
+                handler(selected)
+            }
+        }
+
     }
 
     override fun getItemCount(): Int {

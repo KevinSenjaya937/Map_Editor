@@ -9,7 +9,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mapData = MapData.get()
-
         val selectorData = StructureData.get()
 
         replaceMapFragment(MapFragment(mapData))
