@@ -12,8 +12,5 @@ class SelectorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     init {
         icon = view.findViewById(R.id.selectionImage)
         descriptionText = view.findViewById(R.id.selectionDescription)
-        itemView.setOnClickListener {
-
-        }
     }
 }

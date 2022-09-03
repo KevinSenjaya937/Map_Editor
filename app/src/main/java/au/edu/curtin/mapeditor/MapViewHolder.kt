@@ -11,6 +11,7 @@ class MapViewHolder(view: View, parent: ViewGroup) : RecyclerView.ViewHolder(vie
     val northEastBlock : ImageView
     val southWestBlock : ImageView
     val southEastBlock : ImageView
+    val overlay : ImageView
     val size = parent.measuredHeight / MapData.HEIGHT + 1
     val lp: ViewGroup.LayoutParams = itemView.layoutParams
 
@@ -22,5 +23,6 @@ class MapViewHolder(view: View, parent: ViewGroup) : RecyclerView.ViewHolder(vie
         northEastBlock = view.findViewById(R.id.northeast)
         southWestBlock = view.findViewById(R.id.southwest)
         southEastBlock = view.findViewById(R.id.southeast)
+        overlay = view.findViewById(R.id.overlay)
     }
 }

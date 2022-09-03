@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class MapAdapter(private val mapData:MapData,
-                 private val handler : (Structure) -> Unit) : RecyclerView.Adapter<MapViewHolder>() {
-    private var communication = Communication()
+                 private val handler : (postitionData) -> Unit) : RecyclerView.Adapter<MapViewHolder>() {
+
+    class postitionData(val pos: Int, val row: Int, val col: Int) {
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MapViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -26,19 +28,24 @@ class MapAdapter(private val mapData:MapData,
             holder.northEastBlock.setImageResource(mapElement.northEast)
             holder.southWestBlock.setImageResource(mapElement.southWest)
             holder.southEastBlock.setImageResource(mapElement.southEast)
+            if (mapElement.structure != null) {
+                holder.overlay.setImageResource(mapElement.structure.drawableId)
+            }
+
         }
         holder.itemView.setOnClickListener {
-            val selected = communication.getSelected()
-            Log.v("MESSAGE", "NULL")
-            if (selected != null) {
-                Log.v("MESSAGE", "NOT NULL")
-                handler(selected)
-            }
+            handler(packageData(position, row, col))
         }
-
     }
 
     override fun getItemCount(): Int {
         return (MapData.HEIGHT * MapData.WIDTH)
     }
+
+    fun packageData(position: Int, row: Int, col: Int): postitionData {
+        return postitionData(position,row,col)
+    }
+
+
+
 }

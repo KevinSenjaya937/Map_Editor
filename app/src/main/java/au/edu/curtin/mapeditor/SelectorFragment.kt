@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -32,10 +33,9 @@ class SelectorFragment(private val structureData: StructureData) : Fragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = SelectorAdapter(structureData) {
-                selected -> communication.setSelected(selected)
-            communication.getSelected()?.let { showToast(it) }
+                selected -> selectedStructure = selected
+                showToast(selectedStructure)
         }
-
     }
 
     fun getSelectedStructure() : Structure {

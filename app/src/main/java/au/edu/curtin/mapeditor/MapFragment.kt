@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MapFragment(private val mapData: MapData) : Fragment() {
+class MapFragment(private val mapData: MapData,
+                  private val selectorFragment: SelectorFragment) : Fragment() {
     private lateinit var adapter: MapAdapter
     private lateinit var recyclerView: RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,14 +38,20 @@ class MapFragment(private val mapData: MapData) : Fragment() {
         recyclerView = view.findViewById(R.id.mapRecyclerView)
         recyclerView.layoutManager = layoutManager
         adapter = MapAdapter(mapData) {
-            selected -> showToast(selected)
-
+            selected -> mapData.get(selected.row, selected.col).structure = selectorFragment.getSelectedStructure()
+            adapter.notifyItemChanged(selected.pos)
+            showToast(selected.row, selected.col)
         }
+
         recyclerView.adapter = adapter
+    }
+
+    fun showToast(row: Int, col:Int) {
+        Toast.makeText(context, mapData.get(row,col).structure.drawableId.toString(), Toast.LENGTH_SHORT).show()
+    }
+
+    fun update() {
 
     }
 
-    fun showToast(selected : Structure) {
-        Toast.makeText(context, selected.label + " selected - Map Received", Toast.LENGTH_SHORT).show()
-    }
 }

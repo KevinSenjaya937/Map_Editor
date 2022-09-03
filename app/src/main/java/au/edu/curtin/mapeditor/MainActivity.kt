@@ -11,8 +11,10 @@ class MainActivity : AppCompatActivity() {
         val mapData = MapData.get()
         val selectorData = StructureData.get()
 
-        replaceMapFragment(MapFragment(mapData))
-        replaceSelectorFragment(SelectorFragment(selectorData))
+        val selectorFragment = SelectorFragment(selectorData)
+        val mapFragment = MapFragment(mapData, selectorFragment)
+        replaceMapFragment(mapFragment)
+        replaceSelectorFragment(selectorFragment)
     }
 
     private fun replaceMapFragment(mapFragment: MapFragment) {
