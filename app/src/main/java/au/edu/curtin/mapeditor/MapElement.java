@@ -1,4 +1,4 @@
-package au.edu.curtin.mapeditor
+package au.edu.curtin.mapeditor;
 
 /**
  * Represents a single grid square in the map. Each map element has both terrain and an optional
@@ -25,17 +25,62 @@ package au.edu.curtin.mapeditor
  * MapElement has either zero or one Structure} objects. For each grid square, we can also change
  * which structure is built on it.
  */
-class MapElement(
-    val isBuildable: Boolean, val northWest: Int, val northEast: Int,
-    val southWest: Int, val southEast: Int,
+public class MapElement
+{
+    private final boolean buildable;
+    private final int terrainNorthWest;
+    private final int terrainSouthWest;
+    private final int terrainNorthEast;
+    private final int terrainSouthEast;
+    private Structure structure;
+
+    public MapElement(boolean buildable, int northWest, int northEast,
+                      int southWest, int southEast, Structure structure)
+    {
+        this.buildable = buildable;
+        this.terrainNorthWest = northWest;
+        this.terrainNorthEast = northEast;
+        this.terrainSouthWest = southWest;
+        this.terrainSouthEast = southEast;
+        this.structure = structure;
+    }
+
+    public boolean isBuildable()
+    {
+        return buildable;
+    }
+
+    public int getNorthWest()
+    {
+        return terrainNorthWest;
+    }
+
+    public int getSouthWest()
+    {
+        return terrainSouthWest;
+    }
+
+    public int getNorthEast()
+    {
+        return terrainNorthEast;
+    }
+
+    public int getSouthEast()
+    {
+        return terrainSouthEast;
+    }
+
     /**
      * Retrieves the structure built on this map element.
      * @return The structure, or null if one is not present.
      */
-    var structure: Structure?
-) {
+    public Structure getStructure()
+    {
+        return structure;
+    }
 
-    init {
-        structure = structure
+    public void setStructure(Structure structure)
+    {
+        this.structure = structure;
     }
 }

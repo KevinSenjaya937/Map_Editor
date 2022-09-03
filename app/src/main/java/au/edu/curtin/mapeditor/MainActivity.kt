@@ -9,13 +9,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val mapData = MapData.get()
+
         val selectorData = StructureData.get()
 
-        val fm = supportFragmentManager
-
-        val selectorFragment = fm.findFragmentById(R.id.selector)
-        if (selectorFragment == null) {
-            fm.beginTransaction().add(R.id.selector, SelectorFragment()).commit()
-        }
+        replaceMapFragment(MapFragment(mapData))
+        replaceSelectorFragment(SelectorFragment(selectorData))
     }
+
+    private fun replaceMapFragment(mapFragment: MapFragment) {
+        val fm = supportFragmentManager
+        val fragmentTransaction = fm.beginTransaction()
+        fragmentTransaction.replace(R.id.map, mapFragment)
+        fragmentTransaction.commit()
+    }
+
+    private fun replaceSelectorFragment(selectorFragment: SelectorFragment) {
+        val fm = supportFragmentManager
+        val fragmentTransaction = fm.beginTransaction()
+        fragmentTransaction.replace(R.id.selector, selectorFragment)
+        fragmentTransaction.commit()
+    }
+
 }
