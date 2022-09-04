@@ -6,15 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class SelectorFragment(private val structureData: StructureData) : Fragment() {
-    private lateinit var adapter: SelectorAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var selectedStructure : Structure
-    private var communication = Communication()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +39,7 @@ class SelectorFragment(private val structureData: StructureData) : Fragment() {
         return selectedStructure
     }
 
-    fun showToast(selected : Structure) {
+    private fun showToast(selected : Structure) {
         Toast.makeText(context, selected.label + " selected", Toast.LENGTH_SHORT).show()
     }
 
